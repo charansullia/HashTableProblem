@@ -15,10 +15,30 @@ namespace HashTables
         }
         public void Add(K key, V value)
         {
-            int position = GetArrayPosition(key); 
+            int position = GetArrayPosition(key);
             LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
             KeyValue<K, V> item = new KeyValue<K, V>() { Key = key, Value = value };
             linkedList.AddLast(item);
+        }
+        public void Remove(K key)
+        {
+            int position = GetArrayPosition(key);
+            LinkedList<KeyValue<K, V>> linkedList = GetLinkedList(position);
+            bool itemFound = false;
+            KeyValue<K, V> foundItem = default(KeyValue<K, V>);
+            foreach (KeyValue<K, V> item in linkedList)
+            {
+                if (item.Key.Equals(key))
+                {
+                    itemFound = true;
+                    foundItem = item;
+                }
+            }
+            if (itemFound)
+            {
+                linkedList.Remove(foundItem);
+            }
+            Console.WriteLine("{}Removed from HashTable");
         }
         public V Get(K key)
         {
@@ -51,8 +71,8 @@ namespace HashTables
     }
         public struct KeyValue<k, v>
         {
-          public k Key { get; set; }
-          public v Value { get; set; }
+           public k Key { get; set; }
+           public v Value { get; set; }
         }
 }
 
@@ -70,7 +90,7 @@ namespace HashTables
 
 
 
-   
-    
-    
+
+
+
 

@@ -64,7 +64,10 @@ namespace HashTables
             Console.WriteLine("17th index value:" + hash17);
             string hash18 = hash.Get("18");
             Console.WriteLine("18th index value:"+hash18);
+            hash.Remove("17");
+            Console.WriteLine("17th index value:" + hash17);
             Console.ReadKey();
+
         }
     }
 }
